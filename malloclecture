@@ -1,0 +1,85 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define MAX 1000
+
+typedef struct donnee
+{
+    int numero;
+    char nom;
+    char prenom;
+    char entsort;
+    int booleen;
+} don;
+
+void chargerfichier(FILE* fichier)
+{
+    fichier = NULL;
+    fichier = fopen("releve.txt","r");
+    if(fichier == NULL)
+    {
+        printf("erreur d'ouverture de fichier.");
+    }
+}
+
+void regroup(FILE* fp,don tab[])
+{
+    chargerfichier(fp);
+    for (int i = 0; i<=MAX; i++)
+    {
+        tab[i].numero = (int *) malloc( 13 * sizeof(int) );
+        fscanf(fp, "%d", &tab[i].numero);
+        tab[i].nom = (char *) malloc( 30 * sizeof(char) );
+        fscanf(fp, "%s", &tab[i].prenom);
+        tab[i].prenom = (char *) malloc( 30 * sizeof(char) );
+        fscanf(fp, "%s", &tab[i].nom);
+        tab[i].entsort = (char *) malloc( 8 * sizeof(char) );
+        fscanf(fp, "%s", &tab[i].entsort);
+    }
+    fclose(fp);
+}
+int test(char *ch1, char *ch2)
+{
+    int tmp;
+    tmp = strcmp(ch1, ch2);
+    return(tmp);
+}
+void echange(char tab[], int i)
+{
+   char tmp[13];
+   strcpy(tmp, tab[i]);
+   strcpy(tab[i],tab[i+1]);
+   strcpy(tab[i+1],tmp);
+
+}
+
+void tri(don tab[MAX])
+{
+    int i, tmp;
+
+    for (i=0 ; i < MAX-1; i++)
+    {
+        tmp = test(tab[i].numero, tab[i+1].numero);
+        if(tmp == 1)
+        {
+         echange(tab[i].numero,i);
+        }
+    }
+}
+
+int main()
+{
+    FILE* RELEVE;
+    RELEVE = NULL;
+    don numeros[MAX];
+    regroup(RELEVE,numeros);
+    printf("%s\n", numeros[45].numero);
+    tri(numeros);
+    /*for(int i=0; i<=MAX;i++)
+    {
+        printf("%s \n", tab[i].numero);
+    }*/
+    printf("%s", numeros[45].numero);
+
+    return 0;
+}
