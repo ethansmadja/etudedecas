@@ -41,12 +41,12 @@ int test(char *ch1, char *ch2)
     tmp = strcmp(ch1, ch2);
     return(tmp);
 }
-void echange(char tab[], int i)
+void echange(don tab[MAX], int i)
 {
-    char tmp[13];
-    strcpy(tmp, tab[i]);
-    strcpy(tab[i],tab[i+1]);
-    strcpy(tab[i+1],tmp);
+    char* tmp = (char*) malloc(15);
+    strcpy(tmp, tab[i].numero);
+    strcpy(tab[i].numero,tab[i+1].numero);
+    strcpy(tab[i+1].numero,tmp);
 
 }
 
@@ -59,14 +59,13 @@ void tri(don tab[MAX])
         tmp = test(tab[i].numero, tab[i+1].numero);
         if(tmp == 1)
         {
-            echange(tab[i].numero,i);
+            echange(tab,i);
         }
     }
 }
 
 int main()
 {
-    int i = 0;
     FILE* RELEVE;
     RELEVE = NULL;
     don numeros[MAX];
@@ -74,11 +73,9 @@ int main()
     regroup(RELEVE, numeros);
     printf("%s\n", numeros[45].numero);
     tri(numeros);
-    printf("%s\n", numeros[45].numero);
-    /*for(i =0; i<=MAX; i++);
+    for(int i =0; i<=MAX;i++)
     {
-        printf("%s\n", numeros[45].numero);
-    }*/
-
+        printf("%s\n", numeros[i].numero);
+    }
     return 0;
 }
