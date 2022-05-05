@@ -1,8 +1,10 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #define MAX 1000
 #include <time.h>
+
 
 typedef struct donnee
 {
@@ -66,38 +68,38 @@ void tribulle(don tab[MAX])
 
 }
 
+
+
+
 int main()
 {
     //Declaration des variables :
     FILE* RELEVE;
     RELEVE = NULL;
     don numeros[MAX];
+    float temps, t1bis, t2bis;
+    clock_t t1, t2;
 
-    //Declaration des variables pour afficher l'heure
-    int h, min, s;
-    time_t now;
-
-    // Renvoie l'heure actuelle
-    time(&now);
-    
-    // Convertir au format heure locale
-    struct tm *local = localtime(&now);
-    h = local->tm_hour;
-    min = local->tm_min;
-    s = local->tm_sec;
-    
     RELEVE = chargerfichier(RELEVE);
     regroup(RELEVE, numeros);
     tribulle(numeros);
-     
-    printf("L'heure avant le tri a bulle : %02d:%02d:%02d\n", h, min, s);
+
+    t1 = clock();
+    t1bis = (float)t1/CLOCKS_PER_SEC;
+    printf("Temps avant execution (au lancement du programme): %f\n\n\n",t1bis);
 
     for(int i =0; i<=MAX; i++)
     {
         printf("%s\n", numeros[i].numero);
     }
-    
-    time(&now);
-    printf("L'heure apres le tri a bulle : %02d:%02d:%02d\n", h, min, s);
+
+    t2 = clock();
+    t2bis = (float)t2/CLOCKS_PER_SEC;
+    printf("\nTemps apres execution : %f\n\n",t2bis);
+
+    temps = (float)(t2-t1)/CLOCKS_PER_SEC;
+    printf("Temps d'execution final = %f - %f = %f\n",t2bis,t1bis,temps);
+
+
     return 0;
 }
