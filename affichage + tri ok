@@ -72,7 +72,6 @@ int main()
     don numeros[MAX];
     RELEVE = chargerfichier(RELEVE);
     regroup(RELEVE, numeros);
-    printf("%s\n", numeros[45].numero);
     tri(numeros);
     for(int i =0; i<=MAX; i++)
     {
