@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #define MAX 1000
+#include <time.h>
 
 typedef struct donnee
 {
@@ -15,12 +16,12 @@ typedef struct donnee
 FILE* chargerfichier(FILE* fichier)
 {
     fichier = NULL;
-    fichier = fopen("releve.txt","r");
+    fichier = fopen("RELEVE TEL.txt","r");
     if(fichier == NULL)
     {
         printf("erreur d'ouverture de fichier.\n");
     }
-return(fichier);
+    return(fichier);
 }
 
 void regroup(FILE* fp,don tab[])
@@ -50,32 +51,53 @@ void echange(don tab[MAX], int i)
 
 }
 
-void tri(don tab[MAX])
+void tribulle(don tab[MAX])
 {
-    int i, tmp;
+    int j, i, tmp;
 
-    for (i=0 ; i < MAX-1; i++)
+    for (j=0 ; j < MAX-1; j++)
     {
-        tmp = test(tab[i].numero, tab[i+1].numero);
-        if(tmp == 1)
+        for (i=0 ; i < MAX-1; i++)
         {
-            echange(tab,i);
+            tmp = test(tab[i].numero, tab[i+1].numero);
+            if(tmp == 1)echange(tab,i);
         }
     }
+
 }
 
 int main()
 {
+    //Declaration des variables :
     FILE* RELEVE;
     RELEVE = NULL;
     don numeros[MAX];
+
+    //Declaration des variables pour afficher l'heure
+    int h, min, s;
+    time_t now;
+
+    // Renvoie l'heure actuelle
+    time(&now);
+    
+    // Convertir au format heure locale
+    struct tm *local = localtime(&now);
+    h = local->tm_hour;
+    min = local->tm_min;
+    s = local->tm_sec;
+    
     RELEVE = chargerfichier(RELEVE);
     regroup(RELEVE, numeros);
-    printf("%s\n", numeros[45].numero);
-    tri(numeros);
-    for(int i =0; i<=MAX;i++)
+    tribulle(numeros);
+     
+    printf("L'heure avant le tri a bulle : %02d:%02d:%02d\n", h, min, s);
+
+    for(int i =0; i<=MAX; i++)
     {
         printf("%s\n", numeros[i].numero);
     }
+    
+    time(&now);
+    printf("L'heure apres le tri a bulle : %02d:%02d:%02d\n", h, min, s);
     return 0;
 }
