@@ -57,18 +57,22 @@ int test(char *ch1, char *ch2)
 void triInsertion(don tab[MAX])
 {
 
-    int i, j;
+    int i, j, h;
     int tmp =0;;
-    for (i=1 ; i <= MAX; i++)
+    for(h=0; h<=MAX; h++)
     {
-        j = i;
-        tmp = test(tab[j-1].numero,tab[j].numero);
-        while (j > 0 && tmp<0)
+        for (i=1 ; i <= MAX; i++)
         {
-            echange(tab, j);
-            j--;
+            j = i;
+            tmp = test(tab[j-1].numero,tab[j].numero);
+            while (j > 0 && tmp<0)
+            {
+                echange(tab, j);
+                j--;
+            }
         }
     }
+
 
 }
 
