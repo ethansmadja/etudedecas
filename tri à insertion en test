@@ -17,7 +17,7 @@ typedef struct donnee
 FILE* chargerfichier(FILE* fichier)
 {
     fichier = NULL;
-    fichier = fopen("RELEVE TEL.txt","r");
+    fichier = fopen("releve.txt","r");
     if(fichier == NULL)
     {
         printf("erreur d'ouverture de fichier.\n");
@@ -38,27 +38,37 @@ void regroup(FILE* fp,don tab[])
     fclose(fp);
 }
 
+void echange(don tab[MAX], int i)
+{
+    char* tmp = (char*) malloc(15);
+    strcpy(tmp, tab[i].numero);
+    strcpy(tab[i].numero,tab[i-1].numero);
+    strcpy(tab[i-1].numero,tmp);
+
+}
+
+int test(char *ch1, char *ch2)
+{
+    int tmp;
+    tmp = strcmp(ch1, ch2);
+    return(tmp);
+}
 
 void triInsertion(don tab[MAX])
 {
 
-     int i, j;
-     char* tmp = (char*) malloc(15);
-
-     for (i=1 ; i <= MAX-1; i++)
+    int i, j;
+    int tmp =0;;
+    for (i=1 ; i <= MAX; i++)
     {
         j = i;
-
-        while (j > 0 && tab[j-1].numero > tab[j].numero)
+        tmp = test(tab[j-1].numero,tab[j].numero);
+        while (j > 0 && tmp<0)
         {
-            strcpy(tmp,tab[j].numero);
-            strcpy(tab[j].numero,tab[j-1].numero);
-            strcpy(tab[j-1].numero,tmp);
-
+            echange(tab, j);
             j--;
         }
     }
-
 
 }
 
@@ -76,7 +86,7 @@ int main()
 
     t1 = clock();
     t1bis = (float)t1/CLOCKS_PER_SEC;
-    printf("Temps avant execution (au lancement du programme): %f\n\n\n",t1bis);
+
     triInsertion(numeros);
 
     for(int i =0; i<=MAX; i++)
@@ -84,15 +94,14 @@ int main()
         printf("%s\n", numeros[i].numero);
     }
 
+    printf("Temps avant execution (au lancement du programme): %f\n\n\n",t1bis);
+
     t2 = clock();
     t2bis = (float)t2/CLOCKS_PER_SEC;
     printf("\nTemps apres execution : %f\n\n",t2bis);
 
     temps = (float)(t2-t1)/CLOCKS_PER_SEC;
     printf("Temps d'execution final = %f - %f = %f\n",t2bis,t1bis,temps);
-
-
-
 
     return 0;
 }
