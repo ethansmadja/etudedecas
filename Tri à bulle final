@@ -82,11 +82,11 @@ int main()
 
     RELEVE = chargerfichier(RELEVE);
     regroup(RELEVE, numeros);
-    
+
 
     t1 = clock();
     t1bis = (float)t1/CLOCKS_PER_SEC;
-    printf("Temps avant execution (au lancement du programme): %f\n\n\n",t1bis);
+    
     tribulle(numeros);
 
     for(int i =0; i<=MAX; i++)
@@ -94,6 +94,8 @@ int main()
         printf("%s\n", numeros[i].numero);
     }
 
+    printf("Temps avant execution (au lancement du programme): %f\n\n\n",t1bis);
+    
     t2 = clock();
     t2bis = (float)t2/CLOCKS_PER_SEC;
     printf("\nTemps apres execution : %f\n\n",t2bis);
