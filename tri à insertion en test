@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #define MAX 1000
+#include <time.h>
+
 
 typedef struct donnee
 {
@@ -15,7 +17,7 @@ typedef struct donnee
 FILE* chargerfichier(FILE* fichier)
 {
     fichier = NULL;
-    fichier = fopen("releve.txt","r");
+    fichier = fopen("RELEVE TEL.txt","r");
     if(fichier == NULL)
     {
         printf("erreur d'ouverture de fichier.\n");
@@ -35,33 +37,28 @@ void regroup(FILE* fp,don tab[])
     }
     fclose(fp);
 }
-int test(char *ch1, char *ch2)
-{
-    int tmp;
-    tmp = strcmp(ch1, ch2);
-    return(tmp);
-}
-void echange(don tab[MAX], int i)
-{
-    char* tmp = (char*) malloc(15);
-    strcpy(tmp, tab[i].numero);
-    strcpy(tab[i].numero,tab[i+1].numero);
-    strcpy(tab[i+1].numero,tmp);
 
-}
 
-void tribulle(don tab[MAX])
+void triInsertion(don tab[MAX])
 {
-    int j, i, tmp;
 
-    for (j=0 ; j < MAX-1; j++)
+     int i, j;
+     char* tmp = (char*) malloc(15);
+
+     for (i=1 ; i <= MAX-1; i++)
     {
-        for (i=0 ; i < MAX-1; i++)
+        j = i;
+
+        while (j > 0 && tab[j-1].numero > tab[j].numero)
         {
-            tmp = test(tab[i].numero, tab[i+1].numero);
-            if(tmp == 1)echange(tab,i);
+            strcpy(tmp,tab[j].numero);
+            strcpy(tab[j].numero,tab[j-1].numero);
+            strcpy(tab[j-1].numero,tmp);
+
+            j--;
         }
     }
+
 
 }
 
@@ -70,12 +67,32 @@ int main()
     FILE* RELEVE;
     RELEVE = NULL;
     don numeros[MAX];
+
+    float temps, t1bis, t2bis;
+    clock_t t1, t2;
+
     RELEVE = chargerfichier(RELEVE);
     regroup(RELEVE, numeros);
-    tribulle(numeros);
+
+    t1 = clock();
+    t1bis = (float)t1/CLOCKS_PER_SEC;
+    printf("Temps avant execution (au lancement du programme): %f\n\n\n",t1bis);
+    triInsertion(numeros);
+
     for(int i =0; i<=MAX; i++)
     {
         printf("%s\n", numeros[i].numero);
     }
+
+    t2 = clock();
+    t2bis = (float)t2/CLOCKS_PER_SEC;
+    printf("\nTemps apres execution : %f\n\n",t2bis);
+
+    temps = (float)(t2-t1)/CLOCKS_PER_SEC;
+    printf("Temps d'execution final = %f - %f = %f\n",t2bis,t1bis,temps);
+
+
+
+
     return 0;
 }
