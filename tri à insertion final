@@ -65,7 +65,7 @@ void triInsertion(don tab[MAX])
         {
             j = i;
             tmp = test(tab[j-1].numero,tab[j].numero);
-            while (j > 0 && tmp<0)
+            while (j > 0 && tmp>0)
             {
                 echange(tab, j);
                 j--;
