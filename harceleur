@@ -95,31 +95,34 @@ void compare(don numeros2[MAX], int tab[27], don numeros[MAX])
 {
     for (int i = 0; i < MAX; i++)
     {
-        if(strcmp(numeros2[i].prenom,numeros[i].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[0]+=1;
-        if(strcmp(numeros2[i].prenom,numeros[i].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[1]+=1;
-        if(strcmp(numeros2[i].prenom,numeros[i].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[2]+=1;
-        if(strcmp(numeros2[i].prenom,numeros[i].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[3]+=1;
-        if(strcmp(numeros2[i].prenom,numeros[i].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[4]+=1;
-        if(strcmp(numeros2[i].prenom,numeros[i].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[5]+=1;
-        if(strcmp(numeros2[i].prenom,numeros[i].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[6]+=1;
-        if(strcmp(numeros2[i].prenom,numeros[i].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[7]+=1;
-        if(strcmp(numeros2[i].prenom,numeros[i].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[8]+=1;
-        if(strcmp(numeros2[i].prenom,numeros[i].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[9]+=1;
-        if(strcmp(numeros2[i].prenom,numeros[i].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[10]+=1;
-        if(strcmp(numeros2[i].prenom,numeros[i].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[11]+=1;
-        if(strcmp(numeros2[i].prenom,numeros[i].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[12]+=1;
-        if(strcmp(numeros2[i].prenom,numeros[i].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[13]+=1;
-        if(strcmp(numeros2[i].prenom,numeros[i].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[14]+=1;
-        if(strcmp(numeros2[i].prenom,numeros[i].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[15]+=1;
-        if(strcmp(numeros2[i].prenom,numeros[i].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[16]+=1;
-        if(strcmp(numeros2[i].prenom,numeros[i].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[17]+=1;
-        if(strcmp(numeros2[i].prenom,numeros[i].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[18]+=1;
-        if(strcmp(numeros2[i].prenom,numeros[i].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[19]+=1;
-        if(strcmp(numeros2[i].prenom,numeros[i].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[20]+=1;
-        if(strcmp(numeros2[i].prenom,numeros[i].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[21]+=1;
-        if(strcmp(numeros2[i].prenom,numeros[i].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[22]+=1;
-        if(strcmp(numeros2[i].prenom,numeros[i].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[23]+=1;
-        if(strcmp(numeros2[i].prenom,numeros[i].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[24]+=1;
+    for(int j = 0; j < MAX; j++)
+    {
+        if(strcmp(numeros2[i].prenom,numeros[j].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[0]+=1;
+        if(strcmp(numeros2[i].prenom,numeros[j].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[1]+=1;
+        if(strcmp(numeros2[i].prenom,numeros[j].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[2]+=1;
+        if(strcmp(numeros2[i].prenom,numeros[j].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[3]+=1;
+        if(strcmp(numeros2[i].prenom,numeros[j].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[4]+=1;
+        if(strcmp(numeros2[i].prenom,numeros[j].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[5]+=1;
+        if(strcmp(numeros2[i].prenom,numeros[j].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[6]+=1;
+        if(strcmp(numeros2[i].prenom,numeros[j].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[7]+=1;
+        if(strcmp(numeros2[i].prenom,numeros[j].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[8]+=1;
+        if(strcmp(numeros2[i].prenom,numeros[j].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[9]+=1;
+        if(strcmp(numeros2[i].prenom,numeros[j].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[10]+=1;
+        if(strcmp(numeros2[i].prenom,numeros[j].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[11]+=1;
+        if(strcmp(numeros2[i].prenom,numeros[j].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[12]+=1;
+        if(strcmp(numeros2[i].prenom,numeros[j].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[13]+=1;
+        if(strcmp(numeros2[i].prenom,numeros[j].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[14]+=1;
+        if(strcmp(numeros2[i].prenom,numeros[j].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[15]+=1;
+        if(strcmp(numeros2[i].prenom,numeros[j].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[16]+=1;
+        if(strcmp(numeros2[i].prenom,numeros[j].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[17]+=1;
+        if(strcmp(numeros2[i].prenom,numeros[j].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[18]+=1;
+        if(strcmp(numeros2[i].prenom,numeros[j].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[19]+=1;
+        if(strcmp(numeros2[i].prenom,numeros[j].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[20]+=1;
+        if(strcmp(numeros2[i].prenom,numeros[j].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[21]+=1;
+        if(strcmp(numeros2[i].prenom,numeros[j].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[22]+=1;
+        if(strcmp(numeros2[i].prenom,numeros[j].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[23]+=1;
+        if(strcmp(numeros2[i].prenom,numeros[j].prenom)==0 && test(numeros2[i].entsort, "Entrant")==0)tab[24]+=1;
+        }
     }
     for (int i = 0; i < 25; i++)
     {
