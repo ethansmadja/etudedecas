@@ -1,0 +1,132 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define MAX 1000
+#include <time.h>
+
+
+typedef struct donnee
+{
+    char numero[13];
+    char nom[30];
+    char prenom[30];
+    char entsort[8];
+    int booleen;
+} don;
+
+FILE* chargerfichier(FILE* fichier)
+{
+    fichier = NULL;
+    fichier = fopen("releve.txt","r");
+    if(fichier == NULL)
+    {
+        printf("erreur d'ouverture de fichier.\n");
+    }
+    return(fichier);
+}
+
+void regroup(FILE* fp,don tab[])
+{
+    fp = chargerfichier(fp);
+    for (int i = 0; i<=MAX; i++)
+    {
+        fscanf(fp, "%s", tab[i].numero);
+        fscanf(fp, "%s", tab[i].prenom);
+        fscanf(fp, "%s", tab[i].nom);
+        fscanf(fp, "%s", tab[i].entsort);
+    }
+    fclose(fp);
+}
+
+void echange(don tab[MAX], int i)
+{
+    char* tmp = (char*) malloc(15);
+    strcpy(tmp, tab[i].numero);
+    strcpy(tab[i].numero,tab[i-1].numero);
+    strcpy(tab[i-1].numero,tmp);
+
+}
+
+int test(char *ch1, char *ch2)
+{
+    int tmp;
+    tmp = strcmp(ch1, ch2);
+    return(tmp);
+}
+
+void supression_doublon(don tab[MAX])
+{
+    int tmp, m = MAX;
+    for (int i = 0; i < m; i++)
+    {
+        for (int j = i + 1; j < m;)
+        {
+            tmp = test(tab[j].numero,tab[i].numero);
+            if ( tmp == 0)
+            {
+                for (int k = j; k <m; k++)
+                {
+                    strcpy(tab[k].nom,tab[k + 1].nom);
+                    strcpy(tab[k].prenom,tab[k + 1].prenom);
+                    strcpy(tab[k].numero,tab[k + 1].numero);
+                    strcpy(tab[k].entsort,tab[k + 1].entsort);
+                }
+                m--;
+            }
+            else
+                j++;
+        }
+    }
+}
+
+void compare(don numeros2[MAX], int tab[27], don numeros[MAX])
+{
+    for (int i = 0; i < MAX; i++)
+    {
+        if(strcmp(numeros2[i].prenom,"Anasthasie")==0 && test(numeros2[i].entsort, "Entrant")==0)tab[0]+=1;
+        if(strcmp(numeros2[i].prenom,"Andre")==0 && test(numeros2[i].entsort, "Entrant")==0)tab[1]+=1;
+        if(strcmp(numeros2[i].prenom,"Gilles")==0 && test(numeros2[i].entsort, "Entrant")==0)tab[2]+=1;
+        if(strcmp(numeros2[i].prenom,"Nestor")==0 && test(numeros2[i].entsort, "Entrant")==0)tab[3]+=1;
+        if(strcmp(numeros2[i].prenom,"Celine")==0 && test(numeros2[i].entsort, "Entrant")==0)tab[4]+=1;
+        if(strcmp(numeros2[i].prenom,"Fred")==0 && test(numeros2[i].entsort, "Entrant")==0)tab[5]+=1;
+        if(strcmp(numeros2[i].prenom,"Albert")==0 && test(numeros2[i].entsort, "Entrant")==0)tab[6]+=1;
+        if(strcmp(numeros2[i].prenom,"Sarah")==0 && test(numeros2[i].entsort, "Entrant")==0)tab[7]+=1;
+        if(strcmp(numeros2[i].prenom,"Edgar")==0 && test(numeros2[i].entsort, "Entrant")==0)tab[8]+=1;
+        if(strcmp(numeros2[i].prenom,"Oscar")==0 && test(numeros2[i].entsort, "Entrant")==0)tab[9]+=1;
+        if(strcmp(numeros2[i].prenom,"Jacques")==0 && test(numeros2[i].entsort, "Entrant")==0)tab[10]+=1;
+        if(strcmp(numeros2[i].prenom,"Sophie")==0 && test(numeros2[i].entsort, "Entrant")==0)tab[11]+=1;
+        if(strcmp(numeros2[i].prenom,"Anne")==0 && test(numeros2[i].entsort, "Entrant")==0)tab[12]+=1;
+        if(strcmp(numeros2[i].prenom,"Jonathan")==0 && test(numeros2[i].entsort, "Entrant")==0)tab[13]+=1;
+        if(strcmp(numeros2[i].prenom,"Hakim")==0 && test(numeros2[i].entsort, "Entrant")==0)tab[14]+=1;
+        if(strcmp(numeros2[i].prenom,"Philippe")==0 && test(numeros2[i].entsort, "Entrant")==0)tab[15]+=1;
+        if(strcmp(numeros2[i].prenom,"Mehdi")==0 && test(numeros2[i].entsort, "Entrant")==0)tab[16]+=1;
+        if(strcmp(numeros2[i].prenom,"Jose")==0 && test(numeros2[i].entsort, "Entrant")==0)tab[17]+=1;
+        if(strcmp(numeros2[i].prenom,"Jean-Pierre")==0 && test(numeros2[i].entsort, "Entrant")==0)tab[18]+=1;
+        if(strcmp(numeros2[i].prenom,"Helene")==0 && test(numeros2[i].entsort, "Entrant")==0)tab[19]+=1;
+        if(strcmp(numeros2[i].prenom,"Ariane")==0 && test(numeros2[i].entsort, "Entrant")==0)tab[20]+=1;
+        if(strcmp(numeros2[i].prenom,"Aubin")==0 && test(numeros2[i].entsort, "Entrant")==0)tab[21]+=1;
+        if(strcmp(numeros2[i].prenom,"Oreste")==0 && test(numeros2[i].entsort, "Entrant")==0)tab[22]+=1;
+        if(strcmp(numeros2[i].prenom,"Vanessa")==0 && test(numeros2[i].entsort, "Entrant")==0)tab[23]+=1;
+        if(strcmp(numeros2[i].prenom,"Marc")==0 && test(numeros2[i].entsort, "Entrant")==0)tab[24]+=1;
+    }
+    for (int i = 0; i < 25; i++)
+    {
+        printf("%s a appele %d fois\n",numeros[i].prenom, tab[i]);
+    }
+}
+
+int main()
+{
+    FILE* RELEVE;
+    RELEVE = NULL;
+    don numeros[MAX];
+    don numeros2[MAX];
+    RELEVE = chargerfichier(RELEVE);
+    regroup(RELEVE, numeros);
+    regroup(RELEVE, numeros2);
+    supression_doublon(numeros);
+
+    int tab[27];
+    compare(numeros2,tab, numeros);
+    return 0;
+}
