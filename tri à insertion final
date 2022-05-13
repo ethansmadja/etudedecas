@@ -41,10 +41,22 @@ void regroup(FILE* fp,don tab[])
 void echange(don tab[MAX], int i)
 {
     char* tmp = (char*) malloc(15);
+    
     strcpy(tmp, tab[i].numero);
-    strcpy(tab[i].numero,tab[i-1].numero);
-    strcpy(tab[i-1].numero,tmp);
+    strcpy(tab[i].numero,tab[i+1].numero);
+    strcpy(tab[i+1].numero,tmp);
 
+    strcpy(tmp, tab[i].prenom);
+    strcpy(tab[i].prenom,tab[i+1].prenom);
+    strcpy(tab[i+1].prenom,tmp);
+
+    strcpy(tmp, tab[i].nom);
+    strcpy(tab[i].nom,tab[i+1].nom);
+    strcpy(tab[i+1].nom,tmp);
+
+    strcpy(tmp, tab[i].entsort);
+    strcpy(tab[i].entsort,tab[i+1].entsort);
+    strcpy(tab[i+1].entsort,tmp);
 }
 
 int test(char *ch1, char *ch2)
@@ -95,7 +107,10 @@ int main()
 
     for(int i =0; i<=MAX; i++)
     {
-        printf("%s\n", numeros[i].numero);
+        printf("%s ", numeros[i].numero);
+        printf("%s ", numeros[i].prenom);
+        printf("%s ", numeros[i].nom);
+        printf("%s\n", numeros[i].entsort);
     }
 
     printf("Temps avant execution (au lancement du programme): %f\n\n\n",t1bis);
