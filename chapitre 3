@@ -1,0 +1,64 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define MAX 1000
+#include <time.h>
+
+int main()
+{
+    srand(time(NULL));
+    int tab1[MAX], tab2[MAX], tab3[27], tmp, nbr = MAX;
+    for(int i = 0; i<=MAX; i++)
+    {
+        tab1[i] = rand()%25;
+        tab2[i]=tab1[i];
+    }
+
+    ///triage a bulle du tableau de valeurs
+    for (int i=0 ; i < MAX-1; i++)
+    {
+        for (int j=0 ; j < MAX-i-1; j++)
+        {
+            if (tab2[j] > tab2[j+1])
+            {
+                tmp =  tab2[j];
+                tab2[j] = tab2[j+1];
+                tab2[j+1]= tmp;
+            }
+        }
+    }
+
+    ///suppression des doublons du tableaux
+    for (int i = 0; i < nbr; i++)
+    {
+        for (int j = i + 1; j < nbr;)
+        {
+            if (tab2[j] == tab2[i])
+            {
+                for (int k = j; k < nbr; k++)
+                {
+                    tab2[k] = tab2[k + 1];
+                }
+                nbr--;
+            }
+            else
+                j++;
+        }
+    }
+    for (int i=0 ; i < 27; i++) tab3[i]=0;
+
+    ///pour comparer les valeurs trie et le tableau de valeurs de base, le compte est stocké dans un troisieme tableau
+    for (int i = 0; i < MAX; i++)
+    {
+        for(int j = 0; j<25; j++)
+        {
+            if(tab1[i]==tab2[j])tab3[j]+=1;
+        }
+    }
+    for (int i = 0; i < 25; i++)
+    {
+        printf("%d a aparait %d fois\n",i, tab3[i]);
+    }
+    return 0;
+}
